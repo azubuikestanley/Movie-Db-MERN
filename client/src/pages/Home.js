@@ -1,13 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import AppNavbar from '../components/AppNavbar';
+import Search from '../components/Search';
 // import '../App.css';
 
 
-function Home() {
+const Home = () => {
     return (
         <div className="App">
             <AppNavbar />
+            <Search />
         </div>
     )
 }

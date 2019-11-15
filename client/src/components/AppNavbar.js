@@ -19,7 +19,7 @@ const AppNavbar = () => {
         <div>
             <Navbar color="dark" dark expand="sm" className="mb-5">
                 <Container>
-                    <NavbarBrand href="/"><img src="../assets/logo.jpg" alt="Brand logo" height={40}/> Movies</NavbarBrand>
+                    <NavbarBrand href="/"><img src="./assets/logo.png" alt="Brand logo" height={40}/> myMovies</NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
