@@ -9,6 +9,8 @@ import {
     NavLink,
     Container
     } from 'reactstrap';
+import Search from '../components/Search';
+
 
 
 const AppNavbar = () => {
@@ -19,7 +21,10 @@ const AppNavbar = () => {
         <div>
             <Navbar color="dark" dark expand="sm" className="mb-5">
                 <Container>
-                    <NavbarBrand href="/"><img src="./assets/logo.png" alt="Brand logo" height={40}/> myMovies</NavbarBrand>
+                    <NavbarBrand href="/">
+                        <img src={`${process.env.PUBLIC_URL}/assets/img/logo.png`} alt="logo" height={40}/> myMovies
+                    </NavbarBrand>
+                        <Search />
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>

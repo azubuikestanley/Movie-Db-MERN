@@ -32,7 +32,7 @@ const Search = () => {
             <InputGroup className="container">
                 <InputGroupAddon addonType="prepend">
                     <InputGroupText>
-                        <i class="material-icons">search</i>
+                        <i className="material-icons">search</i>
                     </InputGroupText>
                 </InputGroupAddon>
                 <Input 
