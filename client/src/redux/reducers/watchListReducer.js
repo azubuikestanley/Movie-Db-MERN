@@ -1,22 +1,24 @@
-import { REQUEST_GET_MOVIES, SUCCESS_GET_MOVIES, FAILURE_GET_MOVIES } from '../actions/types';
+import { REQUEST_GET_WATCHLIST, SUCCESS_GET_WATCHLIST, FAILURE_GET_WATCHLIST} from '../actions/types';
 
 
 const initialState = {
-    movies: [],
+    movieLists: [],
 }
 
 export default function (state = initialState, action) {
     switch(action.type) {
-        case REQUEST_GET_MOVIES:
+        case REQUEST_GET_WATCHLIST:
             return {
                 ...state
+               
             };
-        case SUCCESS_GET_MOVIES:
+        case SUCCESS_GET_WATCHLIST:
             return {
                 ...state,
-                movies: action.movies,
+                movieLists: action.movieLists,
+                
             };
-        case FAILURE_GET_MOVIES:
+        case FAILURE_GET_WATCHLIST:
             return {
                 ...state,
                 err: action.err

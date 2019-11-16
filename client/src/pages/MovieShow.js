@@ -4,6 +4,7 @@ import AppNavbar from '../components/AppNavbar';
 import Search from '../components/Search';
 import Movieinfo from '../components/Movieinfo';
 import styled from 'styled-components';
+import MovieShowDetail from '../components/MovieShowDetail';
 
 const InfoWrapper = styled.div `
 
@@ -35,7 +36,7 @@ function MovieShow(props) {
             <div className="App">
                 <AppNavbar />
                 <Search />
-                <Movieinfo props={props}/>
+                <MovieShowDetail props={props} />
             </div>
         </InfoWrapper>
     )

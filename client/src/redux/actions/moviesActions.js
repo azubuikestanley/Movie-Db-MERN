@@ -1,4 +1,4 @@
-import { REQUEST_GET_MOVIES,SUCCESS_GET_MOVIES,FAILURE_GET_MOVIES, MOVIES_LOADING } from './types';
+import { REQUEST_GET_MOVIES,SUCCESS_GET_MOVIES,FAILURE_GET_MOVIES } from './types';
 
 //movies actions creator
 export const requestGetMovies = () => {
@@ -21,11 +21,6 @@ export const failureGetMovies = (err) => {
     };
 };
 
-export const setMoviesLoading = () => {
-    return {
-        type: MOVIES_LOADING
-    }
-}
 
 export const fetchMovie = dispatch => {
     return dispatch => {

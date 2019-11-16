@@ -34,7 +34,7 @@ const Movielist = ({fetchMovie, movies}) => {
                                 <p><span>Year: </span> {movie.premiered}</p>                             
                                 <p><span>Language: </span>{movie.language}</p>  
                                 <a 
-                                    href={`/movieinfo/${movie.name}`} 
+                                    href={`/moviedetail/${movie.id}`} 
                                     className="btn btn-primary d-flex justify-content-center"
                                 >
                                     View Details
