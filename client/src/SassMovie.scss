@@ -6,7 +6,7 @@ $brightness100 : brightness(100%);
 $brightness60 : brightness(60%);
 
 
-.movie-content-2 {
+.movie-content {
    background-color: $color;
    -webkit-border-radius: 7px 7px 7px 7px;
    -moz-border-radius: 7px 7px 7px 7px;
@@ -16,8 +16,10 @@ $brightness60 : brightness(60%);
    transition: all 0.5s ease-in-out;
    -moz-transition: all 0.5s ease-in-out;
    -webkit-transition: all 0.5s ease-in-out;
+   margin-top: 7px;
+   box-shadow: 4px 1px 5px rgba(254, 220, 255, 0.25);
 
-      .movie-wrapper-2 {
+      .movie-wrapper {
         border-radius: 7px;
       }
       .movie-picture img {
@@ -51,6 +53,12 @@ $brightness60 : brightness(60%);
       }
     
  }
+
+ @media (max-width:768px) {
+  .movie-content {
+      margin-top: 10px
+  } 
+} 
 
 
  

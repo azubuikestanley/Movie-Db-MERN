@@ -5,7 +5,7 @@ import Search from '../components/Search';
 import Watchlist from '../components/Watchlist';
 
 
-function WatchList() {
+function Watch() {
     return (
         <div className="App">
             <AppNavbar />
@@ -15,4 +15,4 @@ function WatchList() {
     )
 }
 
-export default WatchList;
+export default Watch;

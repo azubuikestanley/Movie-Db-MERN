@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import { fetchMovie } from '../redux/actions/moviesActions';
@@ -6,9 +6,7 @@ import PropTypes from 'prop-types';
 import '../SassMovie.scss';
 
 
-const Movielist = ({fetchMovie, movies}) => {
-    // const [movies, setMovies] = React.useState([]);
-    
+const Movielist = ({fetchMovie, movies}) => {    
 
   useEffect(() => {
       fetchMovie()
@@ -17,9 +15,6 @@ const Movielist = ({fetchMovie, movies}) => {
       };
   }, [])
 
-  console.log(movies.movies);
-
-
     return (
         <div className="mt-3">
             <div className="container-fluid">
@@ -27,8 +22,8 @@ const Movielist = ({fetchMovie, movies}) => {
                
                 {movies.movies.map((movie) => (
                     <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12" key={movie.id}>
-                        <div className="movie-content-2">
-                            <div className="movie-wrapper-2">
+                        <div className="movie-content">
+                            <div className="movie-wrapper">
                                 <div className="movie-picture">
                                     <img src={movie.image.medium} alt="movie-img" />
                                 </div>
@@ -39,6 +34,7 @@ const Movielist = ({fetchMovie, movies}) => {
                                 <p><span>Year: </span> {movie.premiered}</p>                             
                                 <p><span>Language: </span>{movie.language}</p>                             
                             </div>
+                            <a href={`/movieinfo/${movie.name}`} className="btn btn-primary" >View Details</a>
                         </div>
                     </div>
                 ))};

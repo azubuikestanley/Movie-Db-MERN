@@ -1,33 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 
 const InfoWrapper = styled.div `
     display: flex;
-    justify-content: flex-start;
-    background-image: url(http://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg);
-    background-repeat: no-repeat;
-    background-size: 450px 1200px;
-    background-position: center;
     position: relative;
     margin-top: 10px;
-      
-        .linear {
-                position: absolute;
-                opacity: 0.2;
-                width: 100vw;
-                height: 100vh;
-                background: linear-gradient(234.35deg, #5C006B 0%, rgba(44, 181, 190, 0.6) 100%);
-                background: -moz-linear-gradient(234.35deg, #5C006B 0%, rgba(44, 181, 190, 0.6) 100%);
-                background: -webkit-linear-gradient(234.35deg, #5C006B 0%, rgba(44, 181, 190, 0.6) 100%);
-                background: -o-linear-gradient(234.35deg, #5C006B 0%, rgba(44, 181, 190, 0.6) 100%);
-                background: -ms-linear-gradient(234.35deg, #5C006B 0%, rgba(44, 181, 190, 0.6) 100%); 
-            }
 
         .card {
-            margin-top: 130px;
-            width: 50%;
-            background: green;
+            width: 100%;
+            background: black;
             padding: 10px;
             opacity: 0.6;
             
@@ -41,39 +23,80 @@ const InfoWrapper = styled.div `
 
             h3{
                 color: white;
+                
                 span{
                     color: white;
                 }
             }
             h5{
                 color: white;
+                
                 span{
                     color: white;
                 }
             }
             h6{
                 color: white;
+               
                 span, span p b {
                     color: white;
                 }
             }
         }
+        @media (max-width:768px) {
+            .card {
+                margin-top: 10px
+            } 
+        }
 
 `;
 
-const Movieinfo = () => {
+const Movieinfo = (props) => {
+    const [movies, setMovies] = useState({
+        watchlist: true
+    });
+
+    const HandleClick = (e) => {
+        e.preventDefault();
+        fetch('http://localhost:5000/api/watchlist', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify({'name': movie.name})
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.name == movie.name) {
+                    setMovies({...movie, watchlist: false})
+                }
+            })
+           
+            // .catch(err => console.log(err));
+
+    }
+
+    const movie = props.props.location.state ? props.props.location.state : null
+ 
+    const Summary_ = props.props.location.state ? movie.summary.replace(/<p[^>]*>/g, "").replace(/<\/?p[^>]*>/g, "") : null;
+
+
+ 
     return (
         <InfoWrapper>
             <div className="linear"></div>
             <div className="container">
-                <div className="d-flex justify-content-end">
-                    <div className="card">
-                        <h3>Movie Name: <span> Under The Dome</span></h3> 
-                        <h5>Genre: <span> Drama</span>,<span> Science Fiction</span></h5> 
-                        <h5>Premiere: <span> 2013-06-24</span></h5> 
-                        <h5>Rating: <span> 6.5</span></h5> 
-                        <h6>Summary: <span><p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p></span></h6>
-                        <button>Add to Watchlist</button>
+                <div className="row">
+                    <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                        <img src={movie.image.original} alt="movie" width="300" className="img-responsive" />
+                    </div>
+                    <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                        <div className="card">
+                            <h3>Movie Name: <span>{movie.name}</span></h3> 
+                            <h5>Genre: <span> {movie.genres[0]}</span> - <span> {movie.genres[1]}</span></h5> 
+                            <h5>Premiere: <span> {movie.premiered}</span></h5> 
+                            <h5>Rating: <span> {movie.rating.average}</span><i className="material-icons">stars</i></h5> 
+                            <h6>Summary: <span>{Summary_}</span></h6>
+                            {movies.watchlist && <button onClick={HandleClick}>Add to Watchlist</button>}
+                        </div>
                     </div>
                 </div>
             </div>
