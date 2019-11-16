@@ -32,9 +32,14 @@ const Movielist = ({fetchMovie, movies}) => {
                                 <h6 className="movie-title">{movie.name}</h6> 
                                 <p>Rating: {movie.rating.average} <i className="material-icons">stars</i></p>
                                 <p><span>Year: </span> {movie.premiered}</p>                             
-                                <p><span>Language: </span>{movie.language}</p>                             
+                                <p><span>Language: </span>{movie.language}</p>  
+                                <a 
+                                    href={`/movieinfo/${movie.name}`} 
+                                    className="btn btn-primary d-flex justify-content-center"
+                                >
+                                    View Details
+                                </a>
                             </div>
-                            <a href={`/movieinfo/${movie.name}`} className="btn btn-primary" >View Details</a>
                         </div>
                     </div>
                 ))};

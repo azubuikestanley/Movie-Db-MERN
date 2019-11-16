@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import MovieDetails from './pages/MovieDetails';
+import MovieShow from './pages/MovieShow';
 import Watch from './pages/Watch';
 
 function App() {
