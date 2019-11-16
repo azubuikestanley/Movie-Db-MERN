@@ -9,7 +9,6 @@ import {
     NavLink,
     Container
     } from 'reactstrap';
-import Search from '../components/Search';
 
 
 
@@ -24,7 +23,6 @@ const AppNavbar = () => {
                     <NavbarBrand href="/">
                         <img src={`${process.env.PUBLIC_URL}/assets/img/logo.png`} alt="logo" height={40}/> myMovies
                     </NavbarBrand>
-                        <Search />
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>

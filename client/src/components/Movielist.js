@@ -1,83 +1,71 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
+import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { connect } from 'react-redux';
+import { fetchMovie } from '../redux/actions/moviesActions';
+import PropTypes from 'prop-types';
 import '../SassMovie.scss';
 
 
-const Movielist = () => {
+const Movielist = ({fetchMovie, movies}) => {
+    // const [movies, setMovies] = React.useState([]);
+    
+
+  useEffect(() => {
+      fetchMovie()
+      return () => {
+          
+      };
+  }, [])
+
+  console.log(movies.movies);
+
+
     return (
         <div className="mt-3">
             <div className="container-fluid">
                 <div className="row">
-
-                    <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+               
+                {movies.movies.map((movie) => (
+                    <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12" key={movie.id}>
                         <div className="movie-content-2">
                             <div className="movie-wrapper-2">
                                 <div className="movie-picture">
-                                    <img src="https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg" alt="movie-img" />
+                                    <img src={movie.image.medium} alt="movie-img" />
                                 </div>
                             </div>
                             <div className="movie-content-inner">
-                                <h6 className="movie-title"> Under The Dome </h6> 
-                                <small>Rating <i className="material-icons">stars</i> 6.8</small>
-                                <p>Touch darkness and darkness touches you back. <b>True Detective</b> centers on troubled cops and the investigations that drive them to the edge. Each season features a new cast and a new case</p>                             
+                                <h6 className="movie-title">{movie.name}</h6> 
+                                <p>Rating: {movie.rating.average} <i className="material-icons">stars</i></p>
+                                <p><span>Year: </span> {movie.premiered}</p>                             
+                                <p><span>Language: </span>{movie.language}</p>                             
                             </div>
                         </div>
                     </div>
-
-                    <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                        <div className="movie-content-2">
-                            <div className="movie-wrapper-2">
-                                <div className="movie-picture">
-                                    <img src="https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg" alt="movie-img" />
-                                </div>
-                            </div>
-                            <div className="movie-content-inner">
-                                <h6 className="movie-title"> Under The Dome </h6> 
-                                <small>Rating <i className="material-icons">stars</i> 6.8</small>
-                                <p>Touch darkness and darkness touches you back. <b>True Detective</b> centers on troubled cops and the investigations that drive them to the edge. Each season features a new cast and a new case</p>                             
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                        <div className="movie-content-2">
-                            <div className="movie-wrapper-2">
-                                <div className="movie-picture">
-                                    <img src="https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg" alt="movie-img" />
-                                </div>
-                            </div>
-                            <div className="movie-content-inner">
-                                <h6 className="movie-title"> Under The Dome </h6> 
-                                <small>Rating <i className="material-icons">stars</i> 6.8</small>
-                                <p>Touch darkness and darkness touches you back. <b>True Detective</b> centers on troubled cops and the investigations that drive them to the edge. Each season features a new cast and a new case</p>                             
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                        <div className="movie-content-2">
-                            <div className="movie-wrapper-2">
-                                <div className="movie-picture">
-                                    <img src="https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg" alt="movie-img" />
-                                </div>
-                            </div>
-                            <div className="movie-content-inner">
-                                <h6 className="movie-title"> Under The Dome </h6> 
-                                <small>Rating <i className="material-icons">stars</i> 6.8</small>
-                                <p>Touch darkness and darkness touches you back. <b>True Detective</b> centers on troubled cops and the investigations that drive them to the edge. Each season features a new cast and a new case</p>                             
-                            </div>
-                        </div>
-                    </div>
-
-                   
+                ))};
 
                 </div>
             </div>
  
-            <div>1</div>
+            <div>
+                <button>1</button>
+            </div>
         </div>
-    )
+    );
 }
 
-export default Movielist;
+Movielist.propTypes = {
+    fetchMovie: PropTypes.func.isRequired,
+    movies: PropTypes.object.isRequired
+}
+
+const MapDispatchToProps = dispatch => {
+    return {
+        fetchMovie: () => dispatch(fetchMovie())
+    }
+}
+
+const mapStateToProps = (state) => ({
+    movies: state.movies
+});
+
+export default connect(mapStateToProps, MapDispatchToProps )(Movielist);
