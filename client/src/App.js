@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Route exact path="/" component={Home} />
-      <Route path="/movieinfo/" component={MovieInfo} />
+      <Route path="/movieinfo/:id" component={MovieInfo} />
       <Route path="/watchlist/" component={WatchList} />
     </BrowserRouter> 
   );
