@@ -12,7 +12,7 @@ const WatchWrapper = styled.div `
 margin-top: 20px;
 width: 100%;
     h3{
-        color: purple;
+        color: #EFCEFE;;
     }
 
     .table {
@@ -25,10 +25,13 @@ width: 100%;
         border-radius: 5px;
 
         thead{
-            background: blue;
+            background: #61008E;
+            color: #EFCEFE;
         }
         tbody{
-            background: red;
+            background: #EFCEFE;
+            color: #61008E;
+
         }
     }
 
