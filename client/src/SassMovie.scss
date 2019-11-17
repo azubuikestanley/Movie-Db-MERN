@@ -45,6 +45,10 @@ $brightness60 : brightness(60%);
 
       .movie-content-inner {
         padding: 5px 25px 30px 25px;
+
+        .material-icons{
+          color: $secondColor;
+        }
       }
       
       .movie-content-inner p {

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Pagination from './Pagination';
 import { connect } from 'react-redux';
 import { fetchMovie } from '../redux/actions/moviesActions';
 import PropTypes from 'prop-types';
@@ -50,7 +51,7 @@ const Movielist = ({fetchMovie, movies}) => {
             </div>
  
             <div>
-
+                <Pagination />
             </div>
         </div>
     );

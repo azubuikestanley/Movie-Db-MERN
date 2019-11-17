@@ -21,6 +21,10 @@ const InfoWrapper = styled.div `
 
             }
 
+            .material-icons {
+                color: #e0009d;
+            }
+
             h3{
                 color: white;
                 
@@ -70,7 +74,7 @@ const Movieinfo = (props) => {
                 }
             })
            
-            // .catch(err => console.log(err));
+            .catch(err => console.log(err));
 
     }
 

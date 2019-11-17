@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -44,7 +44,19 @@ const Watchlist = ({fetchWatchList, movieLists}) => {
         return () => {
             
         };
-    }, [])
+    }, [movieLists])
+
+
+    const handleClick = (movieList) => {
+
+        fetch(`http://localhost:5000/api/watchlist/${movieList._id}`, {
+        method: 'DELETE',
+        headers: {'content-type': 'application/json'},
+        })
+        .then(res => res.json()) 
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
 
     return (
         <WatchWrapper>
@@ -53,7 +65,7 @@ const Watchlist = ({fetchWatchList, movieLists}) => {
                 <Table borderless className="table">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>S/N</th>
                             <th>Movie Name</th>
                             <th>Action</th>
                         </tr>
@@ -63,13 +75,21 @@ const Watchlist = ({fetchWatchList, movieLists}) => {
                         <tr key={i}>
                             <th scope="row">{i + 1}</th>
                             <td>{movieList.name}</td>
-                            <td>x</td>
+                            <td>
+                                <Button
+                                    className="remove-btn"
+                                    color="danger"
+                                    size="sm"
+                                    onClick={(e) => handleClick(movieList)}
+                                > &times;
+                                </Button>
+                            </td>
                         </tr>
                     ))}
                     </tbody>
                 </Table>
 
-                <div className="d-flex jsutify-content-center">
+                <div className="d-flex justify-content-center">
                     
                 </div>
             </div>

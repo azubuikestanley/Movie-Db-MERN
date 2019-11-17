@@ -24,6 +24,10 @@ margin-top: 10px;
 
         }
 
+        .material-icons {
+            color: #e0009d;
+        }
+
         h3{
             color: white;
             
@@ -66,7 +70,7 @@ const MovieShowDetail = ({props, movie, fetchMovie}) => {
         };
     }, [])
 
-    const HandleClick = (e) => {
+    const handleClick = (e) => {
         e.preventDefault();
         fetch('http://localhost:5000/api/watchlist', {
             method: 'POST',
@@ -80,7 +84,7 @@ const MovieShowDetail = ({props, movie, fetchMovie}) => {
                 }
             })
            
-            // .catch(err => console.log(err));
+            .catch(err => console.log(err));
 
     }
 
@@ -102,7 +106,7 @@ const MovieShowDetail = ({props, movie, fetchMovie}) => {
                             <h5>Premiere: <span> {movie[0].premiered}</span></h5> 
                             <h5>Rating: <span> {movie[0].rating.average}</span><i className="material-icons">stars</i></h5> 
                             <h6>Summary: <span>{  movie[0].summary.replace(/<p[^>]*>/g, "").replace(/<\/?p[^>]*>/g, "")}</span></h6>
-                            {data.watchlist && <button onClick={HandleClick}>Add to Watchlist</button>} 
+                            {data.watchlist && <button onClick={handleClick}>Add to Watchlist</button>} 
                         </div>
                     </div>
                 </div>
