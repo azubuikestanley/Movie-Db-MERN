@@ -71,7 +71,7 @@ const MovieShowDetail = ({props, movie, fetchMovie}) => {
         fetch('http://localhost:5000/api/watchlist', {
             method: 'POST',
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            body: JSON.stringify({'name': movie.name})
+            body: JSON.stringify({'name': movie[0].name})
         })
             .then(response => response.json())
             .then(response => {

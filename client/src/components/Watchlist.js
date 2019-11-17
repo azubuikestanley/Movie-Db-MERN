@@ -70,7 +70,7 @@ const Watchlist = ({fetchWatchList, movieLists}) => {
                 </Table>
 
                 <div className="d-flex jsutify-content-center">
-                    <span>1</span> <span> 2</span> <span>3</span>
+                    
                 </div>
             </div>
         </WatchWrapper>

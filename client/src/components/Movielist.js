@@ -7,13 +7,15 @@ import '../SassMovie.scss';
 
 
 const Movielist = ({fetchMovie, movies}) => {    
+   
 
   useEffect(() => {
       fetchMovie()
       return () => {
           
       };
-  }, [])
+  }, []);
+
 
     return (
         <div className="mt-3">
@@ -48,7 +50,7 @@ const Movielist = ({fetchMovie, movies}) => {
             </div>
  
             <div>
-                <button>1</button>
+
             </div>
         </div>
     );
