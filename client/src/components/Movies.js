@@ -7,7 +7,7 @@ const Movies = ({ movies, loading }) => {
     return (
         <div className="row">
             {movies.map((movie) => (
-                <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12" key={movie.id}>
+                <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6" key={movie.id}>
                     <div className="movie-content">
                         <div className="movie-wrapper">
                             <div className="movie-picture">
