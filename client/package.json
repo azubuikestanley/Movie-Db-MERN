@@ -15,7 +15,8 @@
     "reactstrap": "^8.5.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "tree-kill": "^1.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
